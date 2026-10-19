@@ -37,7 +37,7 @@ API Gateway / Comunicação HTTP
 Microsserviço Java          Microsserviço Node.js   ← este repositório
 (Core do sistema)           (Serviços auxiliares)
         ↓                           ↓
-           PostgreSQL
+               PostgreSQL
 ```
 
 ### Responsabilidades deste serviço
@@ -177,7 +177,6 @@ As variáveis são carregadas do arquivo `.env` pelo **dotenv** e validadas pelo
 | `NODE_ENV` | `development` \| `production` \| `test` | `development` | Ambiente de execução |
 | `PORT` | número inteiro positivo | `3001` | Porta do servidor |
 | `HOST` | texto | `0.0.0.0` | Interface de rede onde o servidor escuta |
-| `LOG_LEVEL` | `fatal` \| `error` \| `warn` \| `info` \| `debug` \| `trace` \| `silent` | `info` | Nível de log do Fastify |
 | `CORS_ORIGIN` | texto | `http://localhost:5173` | Origem do front permitida pelo CORS |
 
 ### Exemplo de `.env.example`
@@ -186,7 +185,6 @@ As variáveis são carregadas do arquivo `.env` pelo **dotenv** e validadas pelo
 NODE_ENV=development
 PORT=3001
 HOST=0.0.0.0
-LOG_LEVEL=info
 CORS_ORIGIN=http://localhost:5173
 ```
 
@@ -219,7 +217,7 @@ Verifica se o serviço está de pé. Usado por monitoramento, Docker healthcheck
 ```json
 {
   "status": "ok",
-  "service": "ironia-realtime-service",
+  "service": "quickOrder-realtime-service",
   "uptime": 3.2,
   "timestamp": "2026-01-01T12:00:00.000Z"
 }
@@ -314,12 +312,12 @@ Formato sugerido para as mensagens:
 ### Build e execução
 
 ```bash
-docker build -t ironia-realtime-service .
+docker build -t quickOrder-realtime-service .
 
 docker run -p 3001:3001 \
   -e PORT=3001 \
   -e CORS_ORIGIN=http://localhost:5173 \
-  ironia-realtime-service
+  quickOrder-realtime-service
 ```
 
 ---
